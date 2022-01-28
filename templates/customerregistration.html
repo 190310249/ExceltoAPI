@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style3 %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">{% endblock style3 %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+    {% block signup-content %}
+    <div>
+        <img class="logo" src="{% static 'assets/download.jfif' %}" alt="logo">
+        <h2 style="color: white; margin-left:40px; margin-top:20px ">Demo Infolabs</h2>
+        <div class="signup-div" style="background: #3898DC">
+            <h3 class="signup-text signup-heading">Sign Up</h3>
+            <p class="signup-text">Fill in your details</p>
+            <hr class="line">
+            <form action="" method="post" novalidate class="shadow p-5">
+                {% if messages %}
+                {% for message in messages %}
+                <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% csrf_token %}
+                {% for fm in form %}
+                <div class="form-group mb-3">
+                    {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                </div>
+                {% endfor %}
+                <input type="submit" value="Submit" class="btn btn-primary">
+                <br>
+                <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="{% url 'login' %}"
+                            class="text-danger">Login Now</a> </small></div>
+                {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <p class="alert alert-danger my-3">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+        {% endblock signup-content %}
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock style %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+
+<!--Banner Slider-->
+{% block result-content %}
+<div class="container mb-5">
+<div>
+    <h1 class="text-center mb-5">Excel to API</h1>
+    </div>
+    <div class="row" style="margin-left:0vw">
+        <div class="text-center">
+            
+
+            <h4><u>Results Generated</u></h4>
+            {% for candidate in candidates %}
+            {{candidate.id}}  ::::  {{candidate.name}} :::<br> {{candidate.output_file}} 
+            <hr>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+{% endblock result-content %}
+<!-- End Banner Slider -->

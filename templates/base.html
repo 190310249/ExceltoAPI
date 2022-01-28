@@ -1,0 +1,124 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+
+  <!-- End Google Analytics Code -->
+  <title>Novacept</title>
+  {% comment %}
+  <link rel="shortcut icon" type="image/png" href="{% static 'app/niarafav1.png' %}"> {% endcomment %}
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!--Custom CSS-->
+  {% block style %}{% endblock style %}
+  {% block style2 %}{% endblock style2 %}
+  {% block style3 %}{% endblock style3 %}
+
+  <title>Medius| {% block title %} {% endblock title %} </title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand ml-1" href="/" style="font-size: 0.7cm; font-style:italic;">
+                <span style="
+        margin-left: 1px;
+        font-size:23.0pt;
+        mso-bidi-font-size:15.0pt;
+        font-family:Algerian;
+        px-3;
+        mso-fareast-font-family:&quot;Matura MT Script Capitals&quot;;
+        mso-bidi-font-family:&quot;Matura MT Script Capitals&quot;;
+        color:#66FF33;
+        " wfd-id="37">Medius</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="margin-left:50vw" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            {% if request.user.is_authenticated %}
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page"
+                                       href="##">Result</a>
+                                </li>
+                            </ul>
+                            <li class="nav-item dropdown mx-2">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{request.user.username|capfirst}}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                    <li>
+                                        <a class="dropdown-item"
+                                           style="margin-top: 2px;font-size: 10px;color: aqua;background-color: #000000;"
+                                           href="##">Change Password</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                           style="margin-top: 2px;font-size: 10px;color: aqua;background-color: #000000;"
+                                           href="/admin/">For Admin</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                           style="margin-top: 2px;font-size: 10px;color: aqua;background-color: #000000;"
+                                           href="##">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <div class="inact">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="##">Register</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page"
+                                           href="##">Login</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </ul>
+                    </div>
+            </div>
+    </nav>
+    {% block home_slider %}{% endblock home_slider %}
+    {% block main-content %} {% endblock main-content %}
+    {% block login-content %}{% endblock login-content %}
+    {% block signup-content %}{% endblock signup-content %}
+    {% block result-content %}{% endblock result-content %}
+
+
+    <!-- Start Footer -->
+    {% comment %} <div style="margin-bottom:2px">
+        <footer class="container-fluid bg-dark text-center p-2 mt-5 mb-15">
+            <small class="text-white"> &copy; 2021 All rights reserved. DEMO Infolabs LLP</small>
+        </footer>
+    </div> {% endcomment %}
+
+    <!-- End Footer -->
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+
+    {% block script %}
+    {% endblock script %}
+</body>
+
+</html>

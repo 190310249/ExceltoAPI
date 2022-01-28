@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+<!--Banner Slider-->
+{% block home_slider %}
+<div class="container mb-5">
+    <h1>Excel to Model Using Api</h1>
+    <div class="row">
+        <div class="col-sm-8">
+            <form action="" method="post" class="shadow p-5">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="file" name="name" class="file-input" placeholder="Upload Excel File"  required ></td>
+                    </tr>
+                    <br>
+                </table>
+                <br>
+                {% comment %} <p class="file_upload">Upload your File :</p>
+                <p style="font-style: italic"> Please upload the test file { }</p>
+                <input type="file" name="documents" required> {% endcomment %}
+                <input class="btn btn-success" type="submit" value="submit">
+            </form>
+        </div>
+
+    </div>
+
+</div>
+{% endblock home_slider %}
+<!-- End Banner Slider -->
+{% comment %} {% block result-content %}
+<div class="container mb-5">
+<div>
+    <h1 class="text-center mb-5">IVR PREDICTION SYSTEM</h1>
+    </div>
+    <div class="row" style="margin-left:0vw">
+        <div class="text-center">
+            
+
+            <h4><u>Results Generated</u></h4>
+            {% for candidate in candidates %}
+            {{candidate.id}}  ::::  {{candidate.name}} :::<br> {{candidate.output_file}} 
+            <hr>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+{% endblock result-content %} {% endcomment %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style2 %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">{% endblock style2 %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    {% block login-content %}
+    <img class="logo" src="{% static 'assets/download.jfif' %}" alt="logo">
+    <h2 style="color: white; margin-left:40px; margin-top:20px ">Demo Infolabs</h2>
+    <div class="login-div" style="background: #3898DC">
+        <h3 class="login-text login-heading">Login</h3>
+        <form action="" method="post" novalidate class="shadow p-5">
+            {% csrf_token %}
+                {% for fm in form %}
+                <div class="form-group label-padding">
+                    {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
+                </div>
+                {% endfor %}
+                <small><a href="{% url 'password_reset' %}">Forgot Password ?</a></small> <br>
+                <input type="submit" class="btn btn-primary mt-4" value="Login">
+                <br>
+                <div class="text-center text-primary fw-bold"><small>New to Demo ? <a
+                            href="{% url 'customerregistration' %}" class="text-danger">Create an Account</a> </small>
+                </div>
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="alert alert-danger my-3">{{error}}</p>
+            {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+    {% endblock login-content %}
+</body>
+
+</html>
